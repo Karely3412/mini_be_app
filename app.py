@@ -1,4 +1,8 @@
+import psycopg2
+import os
 from flask import Flask
+from flask_marshmallow import Marshmallow
+from db import *
 
 
 app = Flask(__name__)
