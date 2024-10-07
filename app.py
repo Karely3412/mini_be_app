@@ -10,6 +10,10 @@ from models.users import Users
 
 app = Flask(__name__)
 
+app.congfig['DATABASE_URI'] = os.getenv("DATABASE_URI")
+app.config["SQLALCHEY_TRACK_MODIFICATIONS"] = False
+
+
 
 if __name__ ==  '__main__':
     app.run(host= '0.0.0.0', port='8086')
