@@ -10,8 +10,8 @@ from models.users import Users
 
 app = Flask(__name__)
 
-app.congfig['DATABASE_URI'] = os.getenv("DATABASE_URI")
-app.config["SQLALCHEY_TRACK_MODIFICATIONS"] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URI")
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 init_db(app, db)
 
