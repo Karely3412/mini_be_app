@@ -1,2 +1,1 @@
-class Imessages:
-    
+class Imessages(db.):
