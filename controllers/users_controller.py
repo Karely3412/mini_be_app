@@ -29,9 +29,14 @@ def create_user(req):
 
 def get_users():
     get_all_users = db.session.query(Users).all()
-    print(get_all_users)
 
     return jsonify({"message": "users found", "results": users_schema.dump(get_all_users) })
+
+
+def get_user(user_id):
+    get_user_by_id = db.session.query(Users).filter(Users.user_id == user_id).first()
+
+    return jsonify({"message":"user found", "result": user_schema.dump(get_user_by_id)}), 200
 
 
 
