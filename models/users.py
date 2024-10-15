@@ -20,6 +20,10 @@ class Users(db.Model):
         self.phone_numb = phone_numb
 
     
+    def get_new_user():
+        return Users("", "", "")
+
+    
 class UsersSchema(ma.Schema):
     class Meta:
         fields = ['user_id', 'name', 'email', 'phone_numb']

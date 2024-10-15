@@ -1,13 +1,13 @@
 from flask import jsonify
 
 
-def populate_object(obj, data_dictionary):
-    fields = data_dictionary.key()
+def populate_object(obj, data_dict):
+    fields = data_dict.keys()
 
     for field in fields:
         try:
-            getattr(obj, fields)
-            setattr(obj, field, data_dictionary[field])
+            getattr(obj, field)
+            setattr(obj, field, data_dict[field])
 
         except AttributeError:
-            jsonify({'Error': f'record has no attribute: {field}'}), 400
+            jsonify({"error message": f"record has no attribute: {field}"}), 400

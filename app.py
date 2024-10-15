@@ -1,4 +1,4 @@
-import psycopg2
+# import psycopg2
 from flask import Flask
 from flask_marshmallow import Marshmallow
 import os

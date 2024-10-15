@@ -12,10 +12,14 @@ class Imessages(db.Model):
     message_id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     message = db.Column(db.String(), nullable=False)
 
-    user_id = db.Column(UUID(as_uuid=True), db.ForeignKey("Users.users_id"), nullable=False)
+    user_id = db.Column(UUID(as_uuid=True), db.ForeignKey("Users.user_id"), nullable=False)
 
     def __init__(self, message):
         self.message = message
+
+    
+    def get_new_imessage():
+        return Imessages("")
 
 
 class ImessagesSchema(ma.Schema):
