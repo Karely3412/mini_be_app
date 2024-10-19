@@ -10,6 +10,7 @@ marshmallow = "*"
 flask-marshmallow = "*"
 sqlalchemy = "*"
 flask-sqlalchemy = "*"
+gunicorn = "*"
 
 [dev-packages]
 
