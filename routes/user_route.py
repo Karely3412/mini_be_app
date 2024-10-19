@@ -17,7 +17,7 @@ def get_user(user_id):
 
 @users.route("/user/update/<user_id>", methods=["PUT"])
 def update_user(user_id):
-    return users_controller.test()
+    return users_controller.update_user(request,user_id)
 
 @users.route("/user/delete/<user_id>", methods=["DELETE"])
 def delete_user(user_id):

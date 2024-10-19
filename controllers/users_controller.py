@@ -39,6 +39,36 @@ def get_user(user_id):
     return jsonify({"message":"user found", "result": user_schema.dump(get_user_by_id)}), 200
 
 
+def update_user(req, user_id):
+    fields = ["name", "email", "phone_numb"]
+
+    post_data = req.form if req.form else req.json
+
+    for field in fields:
+        if field in post_data and post_data[field] == '':
+            return jsonify({"message": "field(s) cannot be empty"}), 400
+        
+
+    if "email" in post_data:
+        email_query = db.session.query(Users).filter(Users.email == post_data["email"]).first()
+        
+        if email_query:
+            return jsonify({"message": "duplicate email"})
+
+  
+    user_query = db.session.query(Users).filter(Users.user_id == user_id).first()
+
+    if not user_query:
+        return jsonify({"message": "user not found"}), 404 
+        
+    populate_object(user_query, post_data)
+
+    db.session.commit()
+    return jsonify({"message": "user updated", "user": user_schema.dump(user_query)}), 200
+
+
+
+
 
 def delete_user (user_id):
     user_delete = db.session.query(Users).filter(Users.user_id == user_id).first()
